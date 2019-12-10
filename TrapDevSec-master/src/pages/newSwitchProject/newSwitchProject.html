@@ -1,0 +1,40 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>
+            项目管理
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content  style="background-color: #B8D3CA;">
+    <!-- <div class="ion-padding">
+    The world is your oyster.
+    <p>If you get lost, the <a target="_blank" rel="noopener" href="https://ionicframework.com/docs/">docs</a> will be your guide.</p>
+  </div> -->
+  
+<div id="select">
+    <ion-card>
+        <ion-card-header id="title" style=text-align:center >
+            <ion-card-title>项　　目　　管　　理</ion-card-title>
+        </ion-card-header>
+
+        <ion-card-content>
+            <button id="one" ion-button shape="round" fill="outline" (click)="trapClick()">诱捕器管理</button>
+            
+            <button id="two" ion-button shape="round" fill="outline" (click)="dryClick()">注干剂管理</button>
+
+            <button id="three" ion-button shape="round" fill="outline" (click)="enemyClick()">天敌防治</button>
+
+            <button id="four" ion-button shape="round" fill="outline" (click)="deadClick()">枯死树清理</button>
+
+            <button id="five" ion-button shape="round" fill="outline" (click)="medicineClick()">药剂防治管理</button>
+           
+            <button id="six" ion-button shape="round" fill="outline" (click)="trackClick()">轨迹追踪</button>
+            <br />
+            <br />
+            <br />
+            <button id="seven" class="button button-outline "  (click)="exitClick()" >退出按钮</button>
+        </ion-card-content>
+    </ion-card>
+</div>
+</ion-content>

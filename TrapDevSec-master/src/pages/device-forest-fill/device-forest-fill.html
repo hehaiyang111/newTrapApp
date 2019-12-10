@@ -1,0 +1,47 @@
+<!--
+  Generated template for the DeviceForestFillPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>森林信息</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-item>
+    <ion-label floating>坡位</ion-label>
+    <ion-input type="text" value="" [(ngModel)]="slopPosition"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label floating>坡向</ion-label>
+    <ion-input type="text" value="" [(ngModel)]="slopDirection"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label floating>林分类型</ion-label>
+    <ion-input type="text" value="" [(ngModel)]="forestStructure"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label floating>平均树高</ion-label>
+    <ion-input type="text" value="" [(ngModel)]="avgHeight"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label floating>平均胸径</ion-label>
+    <ion-input type="text" value="" [(ngModel)]="avgDbh"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label floating>林分密度</ion-label>
+    <ion-input type="number" value="" [(ngModel)]="forestStructureDensity"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label floating>郁闭度</ion-label>
+    <ion-input type="number" value="" [(ngModel)]="crownDensity"></ion-input>
+  </ion-item>
+  <button ion-button="" (click)="submit()" block>提交</button>
+  <button ion-button="" (click)="pass()" block color="light">不填写</button>
+</ion-content>

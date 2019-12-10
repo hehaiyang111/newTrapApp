@@ -1,0 +1,96 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>
+            天敌防治
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <ion-card>
+        <ion-card-content>
+            <h2 id="device">设　备　管　理:</h2>
+            <hr id="line1" />
+            <div id="ID">
+                <ion-item id="one">
+                    <ion-label>设备ID:</ion-label>
+                    <ion-input style="font-size: 80%; margin-left:-5%;" [(ngModel)]="deviceId" (ionChange)="deviceIdInput()"></ion-input>
+                </ion-item>
+                <button id="saomiao" ion-button (click)="scan()">扫描</button>
+            </div>
+            <div id="NUM">
+                <ion-item id="two">
+                    <ion-label>设备编号:</ion-label>
+                    <ion-input [(ngModel)]="deviceSerial" (ionChange)="deviceSerialInput()"></ion-input>
+                </ion-item>
+                <button id="bangding" ion-button (click)="bindNewId()">绑定</button>
+            </div>
+        </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+        <ion-card-content>
+            <h2 id="info">维　护　信　息</h2>
+            <hr id="line2" />
+            <div id="jingwei">
+                <ion-item>
+                    <ion-label>经度:</ion-label>
+                    <ion-input style="font-size: 86%; margin-left:-10%;" disabled="true" [(ngModel)]="longtitude"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label>纬度:</ion-label>
+                    <ion-input style="font-size: 86%; margin-left:-10%;" disabled="true" [(ngModel)]="latitude"></ion-input>
+                </ion-item>
+            </div>
+            <div id="haiba">
+                <ion-item>
+                    <ion-label>海拔:</ion-label>
+                    <ion-input style="font-size: 86%; margin-left:-10%;" disabled="true" [(ngModel)]="altitude"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label>精度:</ion-label>
+                    <ion-input style="font-size: 86%; margin-left:-10%;" disabled="true" [(ngModel)]="accuracy"></ion-input>
+                </ion-item>
+            </div>
+
+            <ion-item id="enemytype">
+                <ion-label>天敌类型:</ion-label>
+                <ion-select [(ngModel)]="predatorsTypeValue" cancelText="取消" okText="确定" >
+                    <ion-option *ngFor="let user of enemyType">{{user.name}}</ion-option>
+                </ion-select>
+            </ion-item>
+
+            <ion-item id="number">
+                <ion-label>释放数量:</ion-label>
+                <ion-input type="number" pattern="[0-9]*" [(ngModel)]="releaseNum"></ion-input>
+            </ion-item>
+
+            <ion-item id="remarks">
+                <ion-label>备注:</ion-label>
+                <ion-input [(ngModel)]="remarks"></ion-input>
+            </ion-item>
+        </ion-card-content>
+    </ion-card>
+
+    <div id="photoANDsubmit">
+        <button id="paizhao" ion-button  (click)="takePhoto()">
+            <ion-label>拍照</ion-label>
+        </button>
+        <button id="tijiao" ion-button  (click)="submit()">
+            <ion-label>提交</ion-label>
+        </button>
+    </div>
+
+    <div id="mapANDquery">
+        <button id="ditu" ion-button  (click)="NavToMap()">
+            <ion-label>地图查看</ion-label>
+        </button>
+        <button id="chaxun" ion-button  (click)="NavToQuery()">
+            <ion-label>查询</ion-label>
+        </button>
+        <!-- <button id="chaxun" ion-button  (click)="test()">
+            <ion-label>测试1000条</ion-label>
+        </button> -->
+    </div>
+
+</ion-content>

@@ -1,0 +1,30 @@
+<!--
+  Generated template for the LocatePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>定位</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <div *ngIf="!location_ready">尚未定位，不能提交数据</div>
+  <div *ngIf="location_ready">已定位</div>
+  <ion-list no-lines>
+    <ion-item id="longitude">经度:{{longitude}}</ion-item>
+    <ion-item id="latitude">纬度:{{latitude}}</ion-item>
+    <ion-item id="altitude">海拔:{{altitude}}</ion-item>
+    <ion-item id="accuracy">精度:{{accuracy}}</ion-item>
+    <!--<ion-item id="longitude">经度:</ion-item>-->
+    <!--<ion-item id="latitude">纬度:</ion-item>-->
+    <!--<ion-item id="altitude">海拔:</ion-item>-->
+    <!--<ion-item id="accuracy">精度:</ion-item>-->
+  </ion-list>
+  <button id="submit_button" ion-button block (click)="fillMaintenanceData()" [disabled]="!location_ready">提交信息</button>
+</ion-content>

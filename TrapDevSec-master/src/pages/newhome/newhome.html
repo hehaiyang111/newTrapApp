@@ -1,0 +1,38 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>
+                用户登录
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content style="background-color: #B8D3CA;" >
+    <!-- <div class="ion-padding">
+    The world is your oyster.
+    <p>If you get lost, the <a target="_blank" rel="noopener" href="https://ionicframework.com/docs/">docs</a> will be your guide.</p>
+  </div> -->
+
+<div id="new_login">
+    <ion-card>
+
+        <ion-card-header id="title" style=text-align:center>
+            <ion-card-title>松材线虫病防控工程管理系统</ion-card-title>
+
+        </ion-card-header>
+        <ion-item id="one">
+            <ion-label >用户名:</ion-label>
+            <ion-input id="UN" [(ngModel)]="username"></ion-input>
+        </ion-item>
+        <ion-item id="two" >
+            <ion-label >密　码:</ion-label>
+            <ion-input id="PW" type="password" [(ngModel)]="password"></ion-input>
+        </ion-item>
+             <div > 
+                <button id="denglu" class="button button-large button-positive" (click)="login()">登　　录</button>
+                <button id="chakan" ion-button shape="round" fill="outline" (click)="scan()">扫　　描</button>
+            </div>  
+        <div id="banquan">©福建农林大学，福建辰康农林科技有限公司</div>
+    </ion-card>
+</div>
+
+</ion-content>

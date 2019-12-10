@@ -1,0 +1,98 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>
+            诱捕器管理
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content >
+    <ion-card>
+        <ion-card-content >
+                <h2 id=trapezoid >设　备　管　理</h2>
+                <hr id="line1" />
+            <div id="ID">
+                <ion-item id="one" >
+                    <ion-label>设备ID：</ion-label>
+                    <ion-input style="font-size: 80%; margin-left:-5%;" [(ngModel)]="deviceId" (ionChange)="deviceIdInput()"></ion-input>             
+                </ion-item>
+                <button id="saomiao" ion-button shape="round" fill="outline" (click)="scan()">扫描</button>
+            </div>
+            <div id="NUM">
+                <ion-item id="two" >
+                    <ion-label>设备编号:</ion-label>
+                    <ion-input [(ngModel)]="deviceSerial" (ionChange)="deviceSerialInput()"></ion-input>
+                </ion-item>
+                <button id="bangding" ion-button shape="round" fill="outline" (click)="bindNewId()">绑定</button>
+            </div>
+        </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+        <ion-card-content>
+            <h2 id="info">维　护　信　息</h2>
+            <hr id="line2" />
+            <div id="jingwei">
+                <ion-item>
+                    <ion-label>经度:</ion-label>
+                    <ion-input style="font-size: 86%; margin-left:-10%;" disabled="true" [(ngModel)]="longtitude"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label>纬度:</ion-label>
+                    <ion-input style="font-size: 86%; margin-left:-10%;" disabled="true" [(ngModel)]="latitude"></ion-input>
+                </ion-item>
+            </div>
+            <div id="haiba">
+                <ion-item>
+                    <ion-label>海拔:</ion-label>
+                    <ion-input style="font-size: 86%; margin-left:-10%;" disabled="true" [(ngModel)]="altitude"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label>精度:</ion-label>
+                    <ion-input style="font-size: 86%; margin-left:-10%;" disabled="true" [(ngModel)]="accuracy"></ion-input>
+                </ion-item>
+            </div>
+            <ion-item id="songmo">
+                <ion-label>松墨天牛:</ion-label>
+                <ion-input type="number" pattern="[0-9]*" [(ngModel)]="newbettle"></ion-input>
+            </ion-item>
+            <ion-item id="qita">
+                <ion-label>其他天牛:</ion-label>
+                <ion-input type="number" pattern="[0-9]*" [(ngModel)]="otherbettle"></ion-input>
+            </ion-item>
+            <ion-item id="type">
+                <ion-label>类型:</ion-label>
+                <ion-select [(ngModel)]="BeetleType" placeholder="请选择默认" cancelText="取消" okText="确定">
+                    <ion-option *ngFor="let user of otherbettleType" value="{{user.id}}">{{user.name}}</ion-option>
+                </ion-select>
+            </ion-item>
+            <ion-item id="injectType">
+                <ion-label>药剂类型:</ion-label>
+                <ion-select [(ngModel)]="injectTypeValue" placeholder="请选择默认" cancelText="取消" okText="确定">
+                    <ion-option *ngFor="let user of injectType">{{user.name}}</ion-option>
+                </ion-select>
+            </ion-item>
+            <ion-item id="workcontent">
+                <ion-label>工作内容:</ion-label>
+                <ion-select [(ngModel)]="WorkContentValue" placeholder="请选择默认" cancelText="取消" okText="确定">
+                    <ion-option *ngFor="let user of workContent" value="{{user.fvalue}}">{{user.name}}</ion-option>
+                </ion-select>
+            </ion-item>
+            <ion-item id="remarks">
+                <ion-label>备注:</ion-label>
+                <ion-input [(ngModel)]="remarks"></ion-input>
+            </ion-item>
+        </ion-card-content>
+    </ion-card>
+
+            <div id="photoANDsubmit"> 
+                <button id="paizhao" ion-button (click)="takePhoto()">拍照</button>
+                <button id="tijiao" ion-button ([disabled])="isDisabled" (click)="submit()">提交</button>
+            </div>
+            <div id="mapANDquery"> 
+                <button id="ditu" ion-button (click)="NavToMap()">地图查看</button>
+                <button id="chaxun" ion-button (click)="NavToQuery()">查询</button>
+                <button id="chaxun" ion-button (click)="test2()">清除缓存</button>
+                <!-- <button id="chaxun" ion-button (click)="test()">测试产生1000条数据</button> -->
+            </div>
+</ion-content>

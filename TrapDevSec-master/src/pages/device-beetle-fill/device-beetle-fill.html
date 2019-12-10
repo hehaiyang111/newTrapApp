@@ -1,0 +1,46 @@
+<!--
+  Generated template for the DeviceBeetleFillPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>天牛信息</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-item>
+    <ion-label floating>更换次数</ion-label>
+    <ion-input type="number" value="" min="0"  [(ngModel)]="changeTimes"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label floating>天牛数量</ion-label>
+    <ion-input type="number" value="" min="0"  [(ngModel)]="beetleNum"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label floating>半径内死亡松树</ion-label>
+    <ion-input type="number" value="" min="0"  [(ngModel)]="pineDeathNum"></ion-input>
+  </ion-item>
+  <ion-item>
+    <!--<ion-label>样本是否存活</ion-label>-->
+    <div style="display: flex; flex-direction: row; justify-content: space-between; align-content: center">
+      <div>样本是否存活</div>
+      <input type="checkbox"  [(ngModel)]="sampleAlive" style="line-height: 100%; vertical-align: middle;"/>
+    </div>
+
+  </ion-item>
+  <ion-item>
+    <!--<ion-label>是否疫点小班</ion-label>-->
+    <div style="display: flex; flex-direction: row; justify-content: space-between; align-content: center">
+      <div>是否疫点小班</div>
+      <input type="checkbox"  [(ngModel)]="epidemicArea" style="line-height: 100%; vertical-align: middle;"/>
+    </div>
+
+  </ion-item>
+  <button ion-button="" (click)="submit()" block>提交</button>
+</ion-content>

@@ -1,0 +1,37 @@
+<!--
+  Generated template for the MedicineQueryPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>药剂防治管理数据查询</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <!-- <h1>数据内容</h1> -->
+    <div style="width: 100%">
+      <table border="1" style="table-layout:fixed" width="100%">
+        <thead>
+          <th>日期</th>
+          <th>批次</th>
+          <th>药剂名称</th>
+          <th>药剂质量(kg)</th>
+          <th>防治面积(m²)</th>
+          <th>工作内容</th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of dataList">
+            <th>{{item.submitDate}}</th>
+            <th>{{item.batch}}</th>
+            <th>{{item.medicineName}}</th>
+            <th>{{item.medicineQua}}</th>
+            <th>{{item.areaFz}}</th>
+            <th>{{item.workContent}}</th>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+</ion-content>

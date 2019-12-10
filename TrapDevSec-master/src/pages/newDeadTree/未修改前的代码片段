@@ -1,0 +1,157 @@
+    awaitF(tmpStorage) {
+        var that = this;
+        for ( var i = 0; i < tmpStorage.length; i++) {
+            ((i)=>{
+                console.log("promise内部");
+                // that.base.showAlert(i, "第几个", () => { });
+                var element = tmpStorage[i];
+                console.log(i);
+                console.log(element);
+                if (element.hasPic == true) {
+                    // this.base.showAlert("有照片", "", () => { });
+                    console.log(element);
+                    console.log(element.photoSum);
+                    // this.base.showAlert(element.photoSum,"一条有几张闭包外",()=>{});
+                    let observer2 = that.httpClient.post(that.base.BASE_URL + 'app/addDeviceId', {},
+                        {
+                            headers: { token: localStorage['token'] }, params: {
+                                deviceId: element.deviceId
+                            }
+                        }).subscribe(res => {
+                            console.log(res);
+                            for (var j = 1; j <= element.photoSum; j = j + 1) {
+                                ((j)=>{
+                                    if (j == 1) {
+                                        that.currentImg = that.photolib1;
+                                    } else if (j == 2) {
+                                        that.currentImg = that.photolib2;
+                                    } else if (j == 3) {
+                                        that.currentImg = that.photolib3;
+                                    }
+                                    console.log("第几张照片");      
+                                    that.j = j;
+                                    console.log(j);
+                                    console.log(that.j);
+                                    //j是当前的图片库
+                                    let options: FileUploadOptions = {};
+                                    options.fileKey = "image";
+                                    var time = Date.parse(Date());
+                                    options.fileName = time + ".jpg";
+                                    options.mimeType = "image/jpeg";
+                                    options.chunkedMode = false;
+                                    options.httpMethod = "POST";
+                                    options.params = {
+                                        deviceId: element.deviceId, longitude: element.longitude, latitude: element.latitude, altitude: element.altitude,
+                                        accuracy: element.accuracy, diameter: element.diameter, height: element.height, volume: element.volume,
+                                        killMethodsValue: element.killMethodsValue, remarks: element.remarks, current: j, batch: element.batch
+                                    };
+                                    options.headers = { token: localStorage['token'] };
+                                    console.log("options");
+                                    console.log(options);
+                                    const fileTransfer: FileTransferObject = that.fileTransfer.create();
+                                    console.log("===当前照片====");
+                                    console.log(that.currentImg);
+                                    
+                                    console.log(i);
+                                    
+                                    console.log(that.currentImg[that.i].img);
+                                    console.log(that.currentImg[i].img);
+                                    let observer = fileTransfer.upload(that.currentImg[i].img, that.base.BASE_URL + 'app/AddDeadtreePhoto', options)
+                                        .then((res) => {
+                                            that.picture.push(res);
+                                            console.log(res);
+                                            console.log(JSON.stringify(res));
+                                            console.log(JSON.parse(JSON.stringify(res)).message);
+                                            // that.base.showAlert(j+"#"+that.j+"#"+i+"#"+that.i,"第几张.j",()=>{});
+                                            // that.base.showAlert(element.photoSum + "当前i:" + i + "#" + j, "一条有几张闭包内", () => { });
+
+                                            console.log(j);
+                                            that.observers.push(observer);
+                                            if (j >= element.photoSum) {
+                                                that.observers.push(observer2);
+                                                console.log(that.observers);
+                                                Promise.all(that.observers).then((res) => {
+                                                    console.log("promise");
+                                                    console.log(res);
+                                                    that.httpClient.post(that.base.BASE_URL + 'app/AddDeadtrees', {},
+                                                        {
+                                                            headers: { token: localStorage['token'] }, params: {
+                                                                deviceId: element.deviceId, longitude: element.longitude, latitude: element.latitude, altitude: element.altitude,
+                                                                accuracy: element.accuracy, diameter: element.diameter, height: element.height, volume: element.volume,
+                                                                killMethodsValue: element.killMethodsValue, remarks: element.remarks, batch: element.batch
+                                                            }
+                                                        })
+                                                        .subscribe(res => {
+                                                            // that.base.showAlert("全部成功了", "", () => { });
+                                                            console.log(JSON.stringify(res));
+                                                            console.log(JSON.parse(JSON.stringify(res)).message);
+                                                            // this.base.showAlert('提示', '提交成功', () => { });
+                                                            if (i >= tmpStorage.length)
+                                                                localStorage.removeItem('deadCache');
+                                                        }, (msg) => {
+                                                            // this.base.showAlert('提示', '提交失败', () => { });
+                                                        });
+                                                })
+
+                                                if (that.picNotExist) {
+                                                    that.httpClient.post(that.base.BASE_URL + 'app/AddDeadtrees', {},
+                                                        {
+                                                            headers: { token: localStorage['token'] }, params: {
+                                                                deviceId: element.deviceId, longitude: element.longitude, latitude: element.latitude, altitude: element.altitude,
+                                                                accuracy: element.accuracy, diameter: element.diameter, height: element.height, volume: element.volume,
+                                                                killMethodsValue: element.killMethodsValue, remarks: element.remarks, batch: element.batch
+                                                            }
+                                                        })
+                                                        .subscribe(res => {
+                                                            // that.base.showAlert("全部成功了", "", () => { });
+                                                            console.log(JSON.stringify(res));
+                                                            console.log(JSON.parse(JSON.stringify(res)).message);
+                                                        }, (msg) => {
+                                                            // this.base.showAlert('提示', '提交失败', () => { });
+                                                        });
+                                                }
+
+
+                                            }
+
+                                        }, (error) => {//发送失败(网络出错等)
+                                            that.picNotExist = true;
+                                            // this.base.showAlert('提示', '提交失败', () => { });
+                                        }).catch((error) => {
+                                            that.picNotExist = true;
+                                        })
+
+
+                                })(j)
+                            }
+                        })
+
+
+
+                } else {
+                    let obsernoPic = that.httpClient.post(that.base.BASE_URL + 'app/AddDeadtrees', {},
+                        {
+                            headers: { token: localStorage['token'] }, params: {
+                                deviceId: element.deviceId, longitude: element.longitude, latitude: element.latitude, altitude: element.altitude,
+                                accuracy: element.accuracy, diameter: element.diameter, height: element.height, volume: element.volume,
+                                killMethodsValue: element.killMethodsValue, remarks: element.remarks, batch: element.batch
+                            }
+                        })
+                        .subscribe(res => {
+                            // that.base.showAlert("全部成功了", "", () => { });
+                            console.log(JSON.stringify(res));
+                            console.log(JSON.parse(JSON.stringify(res)).message);
+                            // this.base.showAlert('提示', '提交成功', () => { });
+                            // that.i++;
+                            // if (that.i >= tmpStorage.length)
+                            //     localStorage.removeItem('deadCache');
+                        }, (msg) => {
+                            // this.base.showAlert('提示', '提交失败', () => { });
+                        });
+
+                }
+
+            })(i)
+        
+        }
+    }

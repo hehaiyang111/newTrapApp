@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>主页</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div style="display: none">
+    <p *ngIf="!location_ready">
+      尚未定位, 不能扫码
+    </p>
+    <!--<button (click)="locate()" ion-button="" [disabled]="">-->
+
+    <!--</button>-->
+    <button (click)="scan()" [disabled]="!location_ready" ion-button="">
+      扫码
+    </button>
+    <button (click)="submit()" ion-button="">
+      测试提交
+    </button>
+    <button (click)="submitBeetle()" ion-button="">
+      测试天牛信息提交
+    </button>
+    <button (click)="submitForest()" ion-button="">
+      测试森林信息提交
+    </button>
+
+  </div>
+  <!--<div>-->
+    <!--<button ion-button block (click)="phototest()">-->
+      <!--拍照测试-->
+    <!--</button>-->
+  <!--</div>-->
+  <h1 style="text-align: center">
+    欢迎使用
+  </h1>
+  <!--<button (click)="location()">定位</button>-->
+  <ion-list no-lines>
+    <ion-item>用户名:{{username}}</ion-item>
+    <ion-item>姓名:{{name}}</ion-item>
+    <ion-item>地区:{{area}}</ion-item>
+    <ion-item>类型:{{type}}</ion-item>
+  </ion-list>
+  <!--<button ion-button="" block (click)="locatePage()" [disabled]="!isWorker">-->
+    <!--定位-->
+  <!--</button>-->
+  <button ion-button="" block (click)="scan()">
+    扫码
+  </button>
+  <button ion-button="" block (click)="cachePage()" [disabled]="!isWorker">
+    缓存记录
+  </button>
+  <button ion-button="" block (click)="deviceDataPage()" [disabled]="!(role == '1' || role == '2' || role == '3')">
+    查看诱捕数据
+  </button>
+  <button ion-button="" block color="danger" (click)="logout()">
+    注销
+  </button>
+</ion-content>

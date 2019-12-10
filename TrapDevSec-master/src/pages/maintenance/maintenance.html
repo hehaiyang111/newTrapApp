@@ -1,0 +1,93 @@
+<!--
+  Generated template for the MaintenancePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>维护信息录入</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-item>
+    <ion-label floating>天牛数量</ion-label>
+    <ion-input type="number" value="" min="0"  [(ngModel)]="num"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label floating>其他天牛类型</ion-label>
+    <ion-select cancelText="取消" okText="确定" [(ngModel)]="otherType">
+      <ion-option value="0">
+        无
+      </ion-option>
+      <ion-option *ngFor="let item of otherBeetleList" value="{{item.id}}">
+        {{item.name}}
+      </ion-option>
+    </ion-select>
+    <!--todo 动态加载-->
+  </ion-item>
+  <ion-item>
+    <ion-label floating>其他天牛数量</ion-label>
+    <ion-input type="number" value="" min="0" [(ngModel)]="otherNum"></ion-input>
+  </ion-item>
+  <ion-item hidden>
+    <ion-label floating>雄虫量</ion-label>
+    <ion-input type="number" value="" min="0"  [(ngModel)]="maleNum"></ion-input>
+  </ion-item>
+  <ion-item hidden>
+    <ion-label floating>雌虫量</ion-label>
+    <ion-input type="number" value="" min="0"  [(ngModel)]="femaleNum"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label floating>药剂类型</ion-label>
+    <ion-select cancelText="取消" okText="确定" [(ngModel)]="drug">
+      <ion-option value="APF-I持久增强型">
+        ﻿APF-I持久增强型
+      </ion-option>
+      <ion-option value="APF-I持久型">
+        ﻿APF-I持久型
+      </ion-option>
+      <ion-option value="APF-I普通型">
+        ﻿APF-I普通型
+      </ion-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label floating>备注</ion-label>
+    <ion-input type="text" value="" [(ngModel)]="remark"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label floating>施工内容</ion-label>
+    <ion-select [(ngModel)]="workingContent" cancelText="取消" okText="确定">
+      <ion-option value="0">
+        首次悬挂诱捕器
+      </ion-option>
+      <ion-option value="1">
+        换药+收虫
+      </ion-option>
+      <ion-option value="2">
+        收虫
+      </ion-option>
+      <ion-option value="3">
+        其他
+      </ion-option>
+    </ion-select>
+  </ion-item>
+  <div>
+    <button ion-button (click)="takePhoto()" block>
+      拍照
+    </button>
+    <button ion-button (click)="choosePhoto()" block>
+      选择照片
+    </button>
+  </div>
+
+  <div>
+    <button ion-button (click)="submit()" [disabled]="have_submit">提交</button>
+  </div>
+  
+</ion-content>
